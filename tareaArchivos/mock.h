@@ -1,0 +1,6 @@
+#ifndef MOCK_H_INCLUDED
+#define MOCK_H_INCLUDED
+
+
+
+#endif // MOCK_H_INCLUDED
