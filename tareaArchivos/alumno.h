@@ -8,6 +8,6 @@ typedef struct {
      int edad;
      int anioCursada;
 
-} stAlumno;
+}stAlumno;
 
 #endif // ALUMNO_H_INCLUDED
