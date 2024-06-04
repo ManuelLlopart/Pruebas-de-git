@@ -10,4 +10,7 @@ typedef struct {
 
 } stAlumno;
 
+void muestraAlumno(stAlumno a);
+stAlumno cargaAlumno();
+
 #endif // ALUMNO_H_INCLUDED

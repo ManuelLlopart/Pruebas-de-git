@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1717506944 source:c:\users\manu_\desktop\programacion\tareaarchivos\alumno.c
+	<stdio.h>
+	<stdlib.h>
+	"alumno.h"
+	<string.h>
+
+1717506944 c:\users\manu_\desktop\programacion\tareaarchivos\alumno.h
+
+1717507809 source:c:\users\manu_\desktop\programacion\tareaarchivos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"alumno.h"
+	<string.h>
+	"mock.h"
+
+1716994000 c:\users\manu_\desktop\programacion\tareaarchivos\mock.h
+
+1716993997 source:c:\users\manu_\desktop\programacion\tareaarchivos\mock.c
+
