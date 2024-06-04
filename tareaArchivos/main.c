@@ -3,45 +3,86 @@
 #include "alumno.h"
 #include <string.h>
 #include "mock.h"
+#include <time.h>
 
+#define DIM 30
 #define AR_ALUMNOS "alumnos.dat"
+
+void leerArchivoAlumnos(char nombreArchivo[]);
+void arregloAlum2archivo(stAlumno a[],int v, char nombreArchivo[]);
+int cantidadArchivo(char nombreArchivo[]);
+
+
 
 int main()
 {
-    stAlumno a[10];
-    int vAlumn=0;
-    stAlumno b;
-    int i=0;
-    for(i=0; i<2; i++)
-    {
-        a[i]=cargaAlumno();
-        vAlumn++;
 
+
+
+
+    stAlumno alumnos[DIM];
+    int vAlumnos = 0;
+    int i;
+    for(i=0; i<10; i++)
+    {
+        alumnos[i].legajo=getFileNumber();
+        alumnos[i].anioCursada=getAnioCursada();
+        getLastName(alumnos[i].apellido);
+        getName(alumnos[i].nombre);
+        alumnos[i].edad=getEdad();
+        vAlumnos++;
     }
-    FILE* archi = fopen(AR_ALUMNOS, "ab");
+    i=0;
+    while(i<vAlumnos)
+    {
+        muestraAlumno(alumnos[i]);
+        i++;
+    }
+    arregloAlum2archivo(alumnos, vAlumnos, AR_ALUMNOS);
+    printf("\n Momento clave\n");
+    leerArchivoAlumnos(AR_ALUMNOS);
+    printf("\n Hay %d alumnos cargados", cantidadArchivo(AR_ALUMNOS));
+
+    return 0;
+}
+
+void arregloAlum2archivo(stAlumno a[],int v, char nombreArchivo[])
+{
+    FILE* archi=fopen(nombreArchivo, "wb");
+
+    int i;
     if(archi)
     {
-        fwrite(&a[1], sizeof(stAlumno), 1, archi);
-
-        fclose(archi);
-    }
-    FILE* archivo = fopen(AR_ALUMNOS, "rb");
-    if(archi)
-    {
-
-        while(fread(&b, sizeof(stAlumno), 1, archivo)>0);
+        for(i=0;i<v;i++)
         {
-            muestraAlumno(b);
-
+            fwrite(&a[i], sizeof(stAlumno), 1, archi);
         }
         fclose(archi);
     }
-//    for(i = 0; i<2; i++)
-//    {
-//        muestraAlumno(a[i]);
-//    }
+}
 
+void leerArchivoAlumnos(char nombreArchivo[])
+{
+    stAlumno a;
+    FILE* archi=fopen(nombreArchivo, "rb");
+    if(archi)
+    {
+       while(fread(&a, sizeof(stAlumno), 1, archi)>0)
+       {
+        muestraAlumno(a);
+       }
+        fclose(archi);
+    }
+}
 
-
-    return 0;
+int cantidadArchivo(char nombreArchivo[])
+{
+    int cantidad=0;
+    FILE* archi=fopen(nombreArchivo, "rb");
+    if(archi)
+    {
+        fseek(archi, 0, SEEK_END);
+        cantidad= ftell(archi)/sizeof(stAlumno);
+    }
+    return cantidad;
 }

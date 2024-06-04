@@ -8,7 +8,7 @@ typedef struct {
      int edad;
      int anioCursada;
 
-} stAlumno;
+}stAlumno;
 
 void muestraAlumno(stAlumno a);
 stAlumno cargaAlumno();

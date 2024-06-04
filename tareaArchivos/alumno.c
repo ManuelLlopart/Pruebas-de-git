@@ -5,7 +5,7 @@
 
 void muestraAlumno(stAlumno a)
 {
-    printf("\n Legajo Nº %d", a.legajo);
+    printf("\n Legajo N: %d", a.legajo);
 
     printf("\n Nombre : %s", a.nombre);
 
@@ -14,6 +14,7 @@ void muestraAlumno(stAlumno a)
     printf("\n Edad : %d", a.edad);
 
     printf("\n Anio de cursada : %d", a.anioCursada);
+    printf("\n\n ====================================================================\n\n");
 
 }
 
